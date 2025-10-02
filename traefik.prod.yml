@@ -36,7 +36,7 @@ providers:
     network: lct25-7
 
   file:
-    filename: /etc/traefik/dynamic.prod.yml
+    filename: /etc/traefik/dynamic.yml
     watch: true
 
 log:
