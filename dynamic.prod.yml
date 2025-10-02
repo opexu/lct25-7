@@ -25,7 +25,7 @@ http:
   routers:
     
     api-router:
-      rule: "Host(`souzmultdemo.ru`) && PathPrefix(`/api`)"
+      rule: "Host(`testtestest.tw1.su`) && PathPrefix(`/api`)"
       entryPoints:
         - "web"
         - "websecure"
@@ -35,7 +35,7 @@ http:
       priority: 100
     
     frontend-router:
-      rule: "Host(`souzmultdemo.ru`)"
+      rule: "Host(`testtestest.tw1.su`)"
       entryPoints:
         - "web"
         - "websecure"
@@ -43,7 +43,7 @@ http:
       priority: 1
 
     dashboard-router:
-      rule: "Host(`souzmultdemo.ru`) && PathPrefix(`/dashboard`)"
+      rule: "Host(`testtestest.tw1.su`) && PathPrefix(`/dashboard`)"
       entryPoints:
         - "websecure"
       middlewares:
@@ -53,7 +53,7 @@ http:
         certResolver: "myresolver"
 
     fastapi-router:
-      rule: "Host(`souzmultdemo.ru`)"
+      rule: "Host(`testtestest.tw1.su`)"
       entryPoints:
         - "websecure"
       service: "fastapi-service"
