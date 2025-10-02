@@ -12,16 +12,6 @@ http:
         prefixes:
           - "/api"
 
-    # static-strip:
-    #   stripPrefix:
-    #     prefixes:
-    #       - "/static"
-
-    # https-redirect:
-    #   redirectScheme:
-    #     scheme: https
-    #     permanent: true
-
   routers:
     
     api-router:
@@ -35,7 +25,7 @@ http:
       priority: 100
     
     frontend-router:
-      rule: "Host(`souzmultdemo.ru`)"
+      rule: "Host(`souzmultdemo.ru`) && !PathPrefix(`/api`)"
       entryPoints:
         - "web"
         - "websecure"
@@ -49,14 +39,6 @@ http:
       middlewares:
         - "dashboard-strip"
       service: "api@internal"
-      tls:
-        certResolver: "myresolver"
-
-    fastapi-router:
-      rule: "Host(`souzmultdemo.ru`)"
-      entryPoints:
-        - "websecure"
-      service: "fastapi-service"
       tls:
         certResolver: "myresolver"
 
