@@ -14,6 +14,7 @@ export default defineConfig( ( { mode } ) => {
 		vueDevTools(),
 		tailwindcss(),
 	] : [ vue(), tailwindcss(), ]
+
 	return {
 		plugins,
 		resolve: {
@@ -21,16 +22,14 @@ export default defineConfig( ( { mode } ) => {
 				'@': fileURLToPath( new URL( './src', import.meta.url ) )
 			},
 		},
-		...( isDev && {
-			server: {
-				port: 5173,
-				host: '0.0.0.0',
-				// https: {
-				// 	key: fs.readFileSync( resolve( __dirname, 'key.pem' ) ),
-				// 	cert: fs.readFileSync( resolve( __dirname, 'cert.pem' ) ),
-				// },
-				allowedHosts: true,
-			},
-		} )
+		server: {
+			port: 5173,
+			host: '0.0.0.0',
+			// https: {
+			// 	key: fs.readFileSync( resolve( __dirname, 'key.pem' ) ),
+			// 	cert: fs.readFileSync( resolve( __dirname, 'cert.pem' ) ),
+			// },
+			allowedHosts: true,
+		}
 	}
 } )
