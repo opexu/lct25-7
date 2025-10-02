@@ -39,3 +39,6 @@ web приложение, которое добавляет эффекты к ф
 5. Wait docker build ( 20 minutes )
 
 6. Go to "http://localhost" from mobile device from same network
+
+7. Or scan qr code
+![Logo](https://raw.githubusercontent.com/opexu/lct25-7/refs/heads/master/qr.png)

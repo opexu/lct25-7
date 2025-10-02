@@ -3,7 +3,7 @@ services:
   front:
     container_name: front
     build:
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.${VITE_NODE_ENV}
       context: ./front
     env_file: .env
     expose:
