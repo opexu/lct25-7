@@ -1,0 +1,6 @@
+networks:
+  default:
+    name: lct25-7
+    ipam:
+      config:
+        - subnet: 172.26.0.0/24

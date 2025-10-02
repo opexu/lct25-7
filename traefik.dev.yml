@@ -1,0 +1,19 @@
+api:
+  dashboard: true
+  insecure: true
+
+entryPoints:
+  web:
+    address: ":80"
+
+providers:
+  docker:
+    exposedByDefault: false
+    network: lct25-7
+
+  file:
+    filename: /etc/traefik/dynamic.dev.yml
+    watch: true
+
+log:
+  level: "DEBUG"

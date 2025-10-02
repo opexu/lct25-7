@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #726de3;
+  --color-primary-light: #A9A6ED;
+  --color-primary-dark: #4941CC;
+
+  --color-secondary: #face18;
+  --color-secondary-light: #FAE48C;
+  --color-secondary-dark: #F5B000;
+  
+  --font-creata: "Creata", sans-serif;
+}
+
+@utility gradient {
+  background: radial-gradient(79.62% 109.8% at 48.3% 82.64%, #f7f7f9 15.32%, #cac0ff 100%);
+}
+
+html,
+body,
+#app {
+  @apply w-dvw h-dvh overflow-hidden touch-none overscroll-none font-creata gradient;
+}
+
+
+
+/* @layer base {
+  
+} */
+
+
+
+
+
+@font-face {
+  font-family: 'Creata';
+  src: url('@/assets/fonts/creata-regular.woff2') format('woff2');
+  font-weight: 400;
+  /* font-normal */
+}
+
+@font-face {
+  font-family: 'Creata';
+  src: url('@/assets/fonts/creata-medium.woff2') format('woff2');
+  font-weight: 500;
+  /* font-medium */
+}
+
+@font-face {
+  font-family: 'Creata';
+  src: url('@/assets/fonts/creata-bold.woff2') format('woff2');
+  font-weight: 700;
+  /* font-normal */
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-slide-zoom-slow-enter-active,
+.fade-slide-zoom-slow-leave-active {
+  transition: all 1.0s ease;
+}
+
+.fade-slide-zoom-slow-enter-from {
+  opacity: 0;
+  transform: scale(1.2);
+}
+
+.fade-slide-zoom-slow-leave-to {
+  opacity: 0;
+  transform: scale(1.2);
+}
+
+.fade-slide-zoom-slow-enter-to,
+.fade-slide-zoom-slow-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}

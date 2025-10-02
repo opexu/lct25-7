@@ -1,0 +1,16 @@
+name: lct25-7
+services:
+  traefik:
+    container_name: traefik
+    image: traefik:v3.0
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./letsencrypt:/letsencrypt"
+      - "./traefik.${VITE_NODE_ENV}.yml:/etc/traefik/traefik.yml:ro"
+      - "./dynamic.${VITE_NODE_ENV}.yml:/etc/traefik/dynamic.yml:ro"
+      - "./certs:/certs"
+    networks:
+      - default

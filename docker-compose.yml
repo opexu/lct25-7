@@ -1,0 +1,5 @@
+include:
+  - compose.networks.yml
+  - compose.front.yml
+  - compose.back.yml
+  - compose.traefik.yml

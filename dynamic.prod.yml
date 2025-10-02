@@ -1,0 +1,73 @@
+http:
+  
+  middlewares: 
+    
+    dashboard-strip:
+      stripPrefix:
+        prefixes:
+          - "/dashboard"
+
+    api-strip:
+      stripPrefix:
+        prefixes:
+          - "/api"
+
+    # static-strip:
+    #   stripPrefix:
+    #     prefixes:
+    #       - "/static"
+
+    # https-redirect:
+    #   redirectScheme:
+    #     scheme: https
+    #     permanent: true
+
+  routers:
+    
+    api-router:
+      rule: "Host(`souzmultdemo.ru`) && PathPrefix(`/api`)"
+      entryPoints:
+        - "web"
+        - "websecure"
+      middlewares:
+        - "api-strip"
+      service: "fastapi-service"
+      priority: 100
+    
+    frontend-router:
+      rule: "Host(`souzmultdemo.ru`)"
+      entryPoints:
+        - "web"
+        - "websecure"
+      service: "frontend-service"
+      priority: 1
+
+    dashboard-router:
+      rule: "Host(`souzmultdemo.ru`) && PathPrefix(`/dashboard`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "dashboard-strip"
+      service: "api@internal"
+      tls:
+        certResolver: "myresolver"
+
+    fastapi-router:
+      rule: "Host(`souzmultdemo.ru`)"
+      entryPoints:
+        - "websecure"
+      service: "fastapi-service"
+      tls:
+        certResolver: "myresolver"
+
+  services:
+
+    frontend-service:
+      loadBalancer:
+        servers:
+          - url: "http://front:5173"
+    
+    fastapi-service:
+      loadBalancer:
+        servers:
+          - url: "http://back:8000"

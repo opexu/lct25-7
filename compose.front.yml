@@ -1,0 +1,13 @@
+name: lct25-7
+services:
+  front:
+    container_name: front
+    build:
+      dockerfile: ./Dockerfile
+      context: ./front
+    env_file: .env
+    expose:
+      - 5173
+    volumes:
+      - ./front/src:/front/src
+      - ./front/public:/front/public

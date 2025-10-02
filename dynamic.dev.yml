@@ -1,0 +1,57 @@
+http:
+  
+  middlewares: 
+    
+    dashboard-strip:
+      stripPrefix:
+        prefixes:
+          - "/dashboard"
+
+    api-strip:
+      stripPrefix:
+        prefixes:
+          - "/api"
+
+  routers:
+    
+    api-router:
+      rule: "Host(`localhost`) && PathPrefix(`/api`)"
+      entryPoints:
+        - "web"
+      middlewares:
+        - "api-strip"
+      service: "fastapi-service"
+      priority: 100
+    
+    frontend-router:
+      rule: "Host(`localhost`)"
+      entryPoints:
+        - "web"
+      service: "frontend-service"
+      priority: 1
+
+    dashboard-router:
+      rule: "Host(`localhost`) && PathPrefix(`/dashboard`)"
+      entryPoints:
+        - "web"
+      middlewares:
+        - "dashboard-strip"
+      service: "api@internal"
+
+    fastapi-router:
+      rule: "Host(`localhost`)"
+      entryPoints:
+        - "web"
+      service: "fastapi-service"
+
+  services:
+
+    frontend-service:
+      loadBalancer:
+        servers:
+          - url: "http://front:5173"
+
+    fastapi-service:
+      loadBalancer:
+        servers:
+          - url: "http://back:8000"
