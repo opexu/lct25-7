@@ -83,7 +83,7 @@ async function handlePhotoTaken( blob: Blob ) {
     const formData = new FormData()
     formData.append('file', blob)
     
-    const url = getRembgUrl( true )
+    const url = getRembgUrl( import.meta.env.VITE_NODE_ENV )
     const response = await fetch( url, {
         method: 'POST',
         body: formData
